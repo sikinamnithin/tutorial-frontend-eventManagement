@@ -12,23 +12,29 @@ export default function Home() {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/events").then((response) => {
-      setEvents(response.data);
-    });
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/events`)
+      .then((response) => {
+        setEvents(response.data);
+      });
   }, []);
 
   const addEvent = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/events", newEvent).then((response) => {
-      setEvents([...events, response.data]);
-    });
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/events`, newEvent)
+      .then((response) => {
+        setEvents([...events, response.data]);
+      });
     setNewEvent({ title: "", date: "", location: "", description: "" });
   };
 
   const deleteEvent = (id) => {
-    axios.delete(`http://localhost:5000/events/${id}`).then(() => {
-      setEvents(events.filter((event) => event.id !== id));
-    });
+    axios
+      .delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/events/${id}`)
+      .then(() => {
+        setEvents(events.filter((event) => event.id !== id));
+      });
   };
 
   return (
