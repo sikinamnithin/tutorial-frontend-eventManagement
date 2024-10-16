@@ -35,7 +35,6 @@ export default function Home() {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-6">Event Management</h1>
 
-      {/* Add Event Form */}
       <form onSubmit={addEvent} className="mb-6">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <input
@@ -77,7 +76,6 @@ export default function Home() {
         </button>
       </form>
 
-      {/* Event List */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (
           <div key={event.id} className="border p-4 rounded shadow-lg">
